@@ -1,16 +1,16 @@
 #include <catch2/catch_test_macros.hpp>
 
-#include <algorithm>
-#include <numeric>
-#include <vector>
+#include <cmath>
 
 int solution(int A, int B, int K) {
   int count = 0;
   if (A <= B) {
     if (K > 0) {
-      std::vector<int> v(B - A + 1, 0);
-      std::iota(v.begin(), v.end(), A);
-      count = std::count_if(v.begin(), v.end(), [=](int i) { return i % K == 0; });
+      if (A % K == 0) {
+        count = std::floor((B - A) / K) + 1;
+      } else {
+        count = std::floor((B - (A - A % K)) / K);
+      }
     }
   }
   return count;

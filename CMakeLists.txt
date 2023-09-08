@@ -32,11 +32,23 @@ foreach(item IN LISTS lesson4_items)
   target_link_libraries("lesson4-${item}" PRIVATE Catch2::Catch2WithMain)
 endforeach()
 
-# skipping passing_cars
-set(lesson5_items  count_div genomic_range_query min_avg_two_slice)
+set(lesson5_items passing_cars count_div genomic_range_query min_avg_two_slice)
 foreach(item IN LISTS lesson5_items)
   add_executable("lesson5-${item}" "lesson5/${item}.cpp")
   target_link_libraries("lesson5-${item}" PRIVATE Catch2::Catch2WithMain)
+endforeach()
+
+set(lesson6_items distinct max_product_of_three)# triangle number_of_disc_intersections)
+foreach(item IN LISTS lesson6_items)
+  add_executable("lesson6-${item}" "lesson6/${item}.cpp")
+  target_link_libraries("lesson6-${item}" PRIVATE Catch2::Catch2WithMain)
+endforeach()
+
+
+set(tasks_items task1 task2)
+foreach(item IN LISTS tasks_items)
+  add_executable("tasks-${item}" "tasks/${item}.cpp")
+  target_link_libraries("tasks-${item}" PRIVATE Catch2::Catch2WithMain)
 endforeach()
 
 list(APPEND CMAKE_MODULE_PATH ${catch2_SOURCE_DIR}/extras)
@@ -52,4 +64,11 @@ foreach(item IN LISTS lesson4_items)
 endforeach()
 foreach(item IN LISTS lesson5_items)
   catch_discover_tests(lesson5-${item})
+endforeach()
+foreach(item IN LISTS lesson6_items)
+  catch_discover_tests(lesson6-${item})
+endforeach()
+
+foreach(item IN LISTS tasks_items)
+  catch_discover_tests(tasks-${item})
 endforeach()

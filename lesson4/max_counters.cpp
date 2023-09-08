@@ -8,10 +8,6 @@ std::vector<int> solution(int N, std::vector<int>& A) {
   std::vector<int> result(N, 0);
   int max = 0;
 
-  int max_counters_ops = std::count(A.begin(), A.end(), N + 1);
-  if (max_counters_ops > 1) {
-  }
-
   for (auto item : A) {
     if (item == N + 1) {
       std::fill(result.begin(), result.end(), max);
